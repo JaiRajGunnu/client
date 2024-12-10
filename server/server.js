@@ -1,8 +1,9 @@
-// server.js
+// server/server.js
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
+const storyRoutes = require("./routes/storyRoutes");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -11,16 +12,8 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Example API Route
-app.get("/api/hello", (req, res) => {
-  res.send({ message: "Hello from the server!" });
-});
-
-// Root route
-app.get("/", (req, res) => {
-    res.send("Welcome to the AI Story Generator backend!");
-  });
-  
+// API Routes
+app.use("/api", storyRoutes); // Add the story generation route here
 
 // Serve the frontend (if it's built for production)
 if (process.env.NODE_ENV === "production") {

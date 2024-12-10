@@ -1,22 +1,19 @@
-// src/pages/HomePage.js
-
-import React, { useEffect, useState } from "react";
+// src/components/HomePage.js
+import React from "react";
+import StoryForm from "./StoryForm";
 
 const HomePage = () => {
-  const [message, setMessage] = useState("");
-
-  // Fetch data from the backend when the component loads
-  useEffect(() => {
-    fetch("http://localhost:5000/api/hello") // Make sure the backend API URL is correct
-      .then((response) => response.json()) // Convert the response to JSON
-      .then((data) => setMessage(data.message)) // Set the message in state
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []); // Empty dependency array ensures it runs only once when the component mounts
-
   return (
-    <div>
-      <h1>Welcome to AI Story Generator</h1>
-      <p>{message}</p> {/* Display the message from the backend */}
+    <div className="min-h-screen bg-gradient-to-r from-indigo-500 to-purple-600 flex flex-col justify-center items-center p-8">
+      <h1 className="text-4xl font-extrabold text-center text-white mb-6">
+        Welcome to AI Story Generator
+      </h1>
+      <p className="text-lg text-center text-white mb-12 max-w-md mx-auto">
+        Generate creative stories with ease! Just fill in the details below and
+        watch your story come to life.
+      </p>
+
+      <StoryForm />
     </div>
   );
 };
