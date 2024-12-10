@@ -1,10 +1,16 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-// Mock story generation logic (you can replace this with AI integration later)
-router.post('/generate-story', (req, res) => {
-  const { genre, length } = req.body;
-  const story = `Once upon a time, in a ${genre} world, a hero set out on an epic adventure. The story was ${length} words long.`;
+router.post("/generate-story", (req, res) => {
+  const { genre, length, protagonist, theme, timePeriod } = req.body;
+
+  // Enhanced story generation logic
+  const story = `
+    In a ${timePeriod} ${genre} world, a ${protagonist} embarked on an incredible journey.
+    The theme of this story was ${theme}, and it unfolded in ${length} words of pure adventure.
+    What twists and turns awaited? That’s for you to discover!
+  `;
+
   res.json({ story });
 });
 
